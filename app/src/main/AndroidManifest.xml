@@ -34,6 +34,35 @@
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" />
+
+    <!--topon start-->
+        <uses-library android:name="org.apache.http.legacy" android:required="false"/>
+        <!-- source file: china/network_sdk/csj/6.4.1.1/AndroidManifest.xml -->
+        <provider
+            android:name="com.bytedance.sdk.openadsdk.multipro.TTMultiProvider"
+            android:authorities="${applicationId}.TTMultiProvider"
+            android:exported="false" />
+        <provider
+            android:name="com.bytedance.sdk.openadsdk.TTFileProvider"
+            android:authorities="${applicationId}.TTFileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/anythink_bk_tt_file_path" />
+        </provider>
+        <!-- source file: china/network_sdk/gdt/4.603.1473/AndroidManifest.xml -->
+
+        <provider
+            android:name="com.qq.e.comm.GDTFileProvider"
+            android:authorities="${applicationId}.gdt.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/anythink_bk_gdt_file_path" />
+        </provider>
+    <!--topon end-->
     </application>
 
 </manifest>

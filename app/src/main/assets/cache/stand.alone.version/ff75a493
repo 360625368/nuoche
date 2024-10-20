@@ -1,0 +1,17 @@
+{
+    "deviceOrientation": "portrait",
+    "showStatusBar": false,
+    "iOSHighPerformance": true,
+    "networkTimeout": {
+        "request": 10000,
+        "connectSocket": 10000,
+        "uploadFile": 10000,
+        "downloadFile": 10000
+    },
+    "subpackages": [
+        {
+            "name": "d3res",
+            "root": "d3res"
+        }
+    ]
+}

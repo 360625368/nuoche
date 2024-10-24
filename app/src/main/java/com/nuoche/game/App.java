@@ -13,6 +13,8 @@ import demo.MainActivity;
 
 public class App extends Application {
 
+    public static MainActivity mainActivity;
+
     public App() {
     }
 
@@ -32,25 +34,6 @@ public class App extends Application {
         AdvertManager.BANNER_AD_ID = "";        //banner广告码
         AdvertManager.SPLASH_AD_ID = "";        //开屏视频广告码
 
-        //如果用的是topon，则调用这个方法初始化
-        AdvertManager.initTopOn(this,"a67138cb550a8f","a1635592f6b1671ae47e9e8859a6f51b6", true);
-        AdvertManager.setLoadCallBack(new AdvertManager.LoadCallBack() {
-            @Override
-            public void onTableVideoLoad() {
-
-            }
-
-            @Override
-            public void onRewardVideoLoad() {   //奖励视频加载成功
-
-            }
-
-            @Override
-            public void onFullVideoLoad() {
-
-            }
-        });
-
         register();
     }
 
@@ -59,7 +42,7 @@ public class App extends Application {
             @Override
             public void onActivityCreated(Activity activity, Bundle bundle) {
                 if (activity instanceof MainActivity) {
-                    AdvertHelper.initRewardVideo(activity);
+                    mainActivity = (MainActivity) activity;
                 }
             }
 
@@ -90,7 +73,9 @@ public class App extends Application {
 
             @Override
             public void onActivityDestroyed(Activity activity) {
-
+                if (activity instanceof MainActivity) {
+                    mainActivity = null;
+                }
             }
         });
     }

@@ -1,5 +1,9 @@
 package com.nuoche.game;
 
+import android.view.Gravity;
+import android.view.View;
+import android.widget.FrameLayout;
+
 import com.inveno.advert.wrap.AdvertHelper;
 import com.inveno.advert.wrap.AdvertManager;
 import com.inveno.advert.wrap.listener.VideoCallBack;
@@ -67,5 +71,30 @@ public class CallAndroid {
 
             }
         });
+    }
+
+    public void showBanner() {
+        if (App.mainActivity == null)
+            return;
+        View rootView = App.mainActivity.getWindow().getDecorView().getRootView();
+        FrameLayout bannerContainer = rootView.findViewById(R.id.layout_banner);
+        if (bannerContainer == null && rootView instanceof FrameLayout) {
+            bannerContainer = new FrameLayout(App.mainActivity);
+            bannerContainer.setId(R.id.layout_banner);
+            FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.WRAP_CONTENT, Gravity.BOTTOM);
+            ((FrameLayout) rootView).addView(bannerContainer, layoutParams);
+        }
+        if (bannerContainer != null) {
+            bannerContainer.removeAllViews();
+            AdvertHelper.showBanner(App.mainActivity, bannerContainer, null);
+        }
+    }
+
+    public void removeBanner() {
+        View rootView = App.mainActivity.getWindow().getDecorView().getRootView();
+        FrameLayout bannerContainer = rootView.findViewById(R.id.layout_banner);
+        if (bannerContainer != null) {
+            bannerContainer.removeAllViews();
+        }
     }
 }
